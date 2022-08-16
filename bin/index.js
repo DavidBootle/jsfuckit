@@ -10,7 +10,9 @@ function getAllFilesInDir(dir, results, baseDir) {
         if (fs.lstatSync(`${dir}/${fileName}`).isDirectory()) {
             getAllFilesInDir(`${dir}/${fileName}`, results, `${baseDir}/${fileName}`);
         } else {
-            results.push(`${baseDir}/${fileName}`)
+            if (path.extname(`${dir}/${fileName}`) == '.js') {
+                results.push(`${baseDir}/${fileName}`)
+            }
         }
     }
 }
@@ -26,15 +28,11 @@ if (args.length != 2) {
 const src = args[0];
 const dest = args[1];
 
-console.debug(`Fetching files from ${src} and compiling them to ${dest}.`)
-
 // verify file/folder exists
 if (!fs.existsSync(src)) {
     console.error('Input path must be a valid file/directory.')
     process.exit(1)
 }
-
-console.debug('File/directory exists.')
 
 // get list of filenames
 var srcFiles = []
@@ -51,8 +49,6 @@ if (fs.lstatSync(src).isDirectory()) {
     srcFiles.push(src);
     destFiles.push(dest);
 }
-console.log(srcFiles);
-console.log(destFiles);
 
 // if src is a directory, create the dest folder if it doesn't already exist
 if (srcIsDir) {
@@ -63,7 +59,6 @@ if (srcIsDir) {
         }
     }
 }
-
 
 // process source files and write to destination files
 for (let i = 0; i < srcFiles.length; i++) {
