@@ -1,0 +1,11 @@
+{
+  "name": "jsfuckit",
+  "version": "1.0.0",
+  "description": "An npx tool to compile Javascript to JSFuck with no regard for optimization.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TheWeirdSquid",
+  "license": "ISC"
+}
