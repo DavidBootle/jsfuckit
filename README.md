@@ -1,6 +1,8 @@
 # jsfuckit
 An npx tool to compile Javascript to JSFuck with no regard for optimization. Simply run and watch your code turn into an insane unreadable mess!
 
+[Source code](https://github.com/TheWeirdSquid/jsfuckit)
+
 ## How to Use
 ```bash
 npx jsfuckit src dest
