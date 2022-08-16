@@ -25,15 +25,19 @@ console.debug('File/directory exists.')
 
 // get list of filenames
 var srcFiles = []
+var destFiles = []
 
 if (fs.lstatSync(src).isDirectory()) {
     // if the input is a directory, add all the filenames in it to src_files
     fileNames = fs.readdirSync(src);
     for (fileName of fileNames) {
         srcFiles.push(`${src}/${fileName}`)
+        destFiles.push(`${dest}/${fileName}`)
     }
 } else {
     // if the input is a file, add it to src_files
     srcFiles.push(src);
+    destFiles.push(dest);
 }
 console.log(srcFiles);
+console.log(destFiles);
